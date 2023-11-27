@@ -1,14 +1,20 @@
-// create web server
-
-// import modules
+// Create web server
 const express = require('express');
-const router = express.Router();
-const commentController = require('../controllers/commentController');
-const { catchErrors } = require('../handlers/errorHandlers');
+const bodyParser = require('body-parser');
+const app = express();
+app.use(bodyParser.json());
+// Comments data
+const comments = {
+  1: [
+    {
+      id: 1,    // Unique identifier
+        body: 'First comment', // Comment body
+        postId: 1, // Belongs to post with id 1
+    },
+    {
+      id: 2,
+        body: 'Second comment',
+        postId: 1,
+    },
+    ],
 
-// routes
-router.get('/', catchErrors(commentController.getComments));
-router.get('/:id', catchErrors(commentController.getComment));
-router.post('/', catchErrors(commentController.createComment));
-router.put('/:id', catchErrors(commentController.updateComment));
-router.delete('/:id', catchErrors(commentController.deleteComment));
