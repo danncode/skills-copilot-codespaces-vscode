@@ -1,3 +1,3 @@
-function calcularNumeros (box1, box2) {
+function calculateNumbers(var1, var2) {
     return box1 + box2
 }
